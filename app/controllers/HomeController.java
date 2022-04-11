@@ -108,7 +108,6 @@ public class HomeController extends Controller {
     public Result home(Http.Request request) throws IOException, ExecutionException, InterruptedException, ParseException {
         Form<Query> queryForm = formFactory.form(Query.class);
         Query q = queryForm.bindFromRequest(request).get();
-        if(q.getQuery().equals("")) {return ok(views.html.Home.error.render("No input string found"));}
         String url = "https://www.freelancer.com/api/projects/0.1/projects/active/";
         HashMap<String, String> params = new HashMap<>();
         params.put("query", q.getQuery());
